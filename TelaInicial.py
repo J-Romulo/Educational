@@ -111,7 +111,7 @@ class TelaInicial:
 
             janelaPrincipal2 = tkinter.Tk()
             janelaPrincipal2.title("Menu")
-            janelaPrincipal2.geometry('500x200')
+            janelaPrincipal2.geometry('500x225')
 
             MenuAluno(aluno, janelaPrincipal2)
             janelaPrincipal2.mainloop()
@@ -129,7 +129,7 @@ class TelaInicial:
 
             janelaPrincipal2 = tkinter.Tk()
             janelaPrincipal2.title("Menu")
-            janelaPrincipal2.geometry('500x200')
+            janelaPrincipal2.geometry('500x225')
 
             MenuAluno(aluno, janelaPrincipal2)
             janelaPrincipal2.mainloop()
