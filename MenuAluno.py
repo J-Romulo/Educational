@@ -1,7 +1,9 @@
 import tkinter
+from ModificarPerfil import *
 
 class MenuAluno:
     def __init__(self, aluno, master=None):
+        self.aluno = aluno
         self.widgetPrincipal = tkinter.Frame(master)
         self.widgetPrincipal.pack()
 
@@ -65,7 +67,7 @@ class MenuAluno:
         self.botaoModificar.pack_forget()
 
         self.botaoModificarLogin.pack(side=tkinter.LEFT)
-        self.botaoModificarLogin["command"] = self.modificarLogin
+        self.botaoModificarLogin["command"] = self.camposLogin
 
         self.botaoModificarSenha.pack(side=tkinter.LEFT)
         self.botaoModificarSenha["command"] = self.modificarSenha
@@ -73,11 +75,11 @@ class MenuAluno:
         self.botaoModificarNome.pack(side=tkinter.LEFT)
 
     
-    def modificarLogin(self):
+    def camposLogin(self):
         self.labelSenhaNova.pack_forget()
         self.entrySenhaNova.pack_forget()
         self.botaoSalvar.pack_forget()
-        
+
         self.widgetCamposModificar.pack()
 
         self.labelLoginConfir.pack()
@@ -90,6 +92,15 @@ class MenuAluno:
         self.entryLoginNovo.pack()
 
         self.botaoSalvar.pack()
+        self.botaoSalvar["command"] = self.modificarLogin
+
+    def modificarLogin(self):
+        login = self.entryLoginConfir.get()
+        senha = self.entrySenhaConfir.get()
+        novoLogin = self.entryLoginNovo.get()
+
+        log = ModificarPerfil.modificarLoginAluno(self.aluno, login, senha, novoLogin)
+        self.aluno.login = log
 
     def modificarSenha(self):
         self.labelLoginNovo.pack_forget()
