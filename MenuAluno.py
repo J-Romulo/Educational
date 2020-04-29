@@ -61,6 +61,9 @@ class MenuAluno:
         self.labelSenhaNova = tkinter.Label(self.widgetCamposModificar, text='Senha Nova: ')
         self.entrySenhaNova = tkinter.Entry(self.widgetCamposModificar)
 
+        self.labelNomeNovo = tkinter.Label(self.widgetCamposModificar, text = 'Novo nome: ')
+        self.entryNomeNovo = tkinter.Entry(self.widgetCamposModificar)
+
         self.botaoSalvar = tkinter.Button(self.widgetCamposModificar, text='Salvar')
 
     def modificar(self):
@@ -73,9 +76,12 @@ class MenuAluno:
         self.botaoModificarSenha["command"] = self.camposSenha
 
         self.botaoModificarNome.pack(side=tkinter.LEFT)
+        self.botaoModificarNome["command"] = self.camposNome
 
     
     def camposLogin(self):
+        self.labelNomeNovo.pack_forget()
+        self.entryNomeNovo.pack_forget()
         self.labelSenhaNova.pack_forget()
         self.entrySenhaNova.pack_forget()
         self.botaoSalvar.pack_forget()
@@ -102,9 +108,13 @@ class MenuAluno:
         log = ModificarPerfil.modificarLoginAluno(self.aluno, login, senha, novoLogin)
         self.aluno.login = log
 
+
+
     def camposSenha(self):
         self.labelLoginNovo.pack_forget()
         self.entryLoginNovo.pack_forget()
+        self.labelNomeNovo.pack_forget()
+        self.entryNomeNovo.pack_forget()
         self.botaoSalvar.pack_forget()
 
         self.widgetCamposModificar.pack()
@@ -130,6 +140,36 @@ class MenuAluno:
         self.aluno.senha = senha
 
 
+
+    def camposNome(self):
+        self.labelLoginNovo.pack_forget()
+        self.entryLoginNovo.pack_forget()
+        self.labelSenhaNova.pack_forget()
+        self.entrySenhaNova.pack_forget()
+        self.botaoSalvar.pack_forget()
+
+        self.widgetCamposModificar.pack()
+
+        self.labelLoginConfir.pack()
+        self.entryLoginConfir.pack()
+
+        self.labelSenhaConfir.pack()
+        self.entrySenhaConfir.pack()
+
+        self.labelNomeNovo.pack()
+        self.entryNomeNovo.pack()
+
+        self.botaoSalvar.pack()
+        self.botaoSalvar["command"] = self.modificarNome
+
+    def modificarNome(self):
+        login = self.entryLoginConfir.get()
+        senha = self.entrySenhaConfir.get()
+        novoNome = self.entryNomeNovo.get()
+
+        nome = ModificarPerfil.modificarNomeAluno(self.aluno, login, senha, novoNome)
+        self.aluno.nome = nome
+        self.labelNome["text"] = ("Nome: {}".format(self.aluno.nome))
 
 
 
