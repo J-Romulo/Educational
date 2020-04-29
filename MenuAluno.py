@@ -70,7 +70,7 @@ class MenuAluno:
         self.botaoModificarLogin["command"] = self.camposLogin
 
         self.botaoModificarSenha.pack(side=tkinter.LEFT)
-        self.botaoModificarSenha["command"] = self.modificarSenha
+        self.botaoModificarSenha["command"] = self.camposSenha
 
         self.botaoModificarNome.pack(side=tkinter.LEFT)
 
@@ -102,7 +102,7 @@ class MenuAluno:
         log = ModificarPerfil.modificarLoginAluno(self.aluno, login, senha, novoLogin)
         self.aluno.login = log
 
-    def modificarSenha(self):
+    def camposSenha(self):
         self.labelLoginNovo.pack_forget()
         self.entryLoginNovo.pack_forget()
         self.botaoSalvar.pack_forget()
@@ -119,6 +119,16 @@ class MenuAluno:
         self.entrySenhaNova.pack()
 
         self.botaoSalvar.pack()
+        self.botaoSalvar["command"] = self.modificarSenha
+
+    def modificarSenha(self):
+        login = self.entryLoginConfir.get()
+        senha = self.entrySenhaConfir.get()
+        novaSenha = self.entrySenhaNova.get()
+
+        senha = ModificarPerfil.modificarSenhaAluno(self.aluno, login, senha, novaSenha)
+        self.aluno.senha = senha
+
 
 
 

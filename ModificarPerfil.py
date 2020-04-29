@@ -16,3 +16,15 @@ class ModificarPerfil:
             print("Senha ou login errado")
 
         return aluno.login
+
+    @staticmethod
+    def modificarSenhaAluno(aluno, login, senha, novaSenha):
+        if(aluno.login == login and aluno.senha == senha):
+            RepositorioAluno.modificarPerfil(aluno.id, 'senha', novaSenha)
+            aluno.senha = novaSenha
+        else:
+            print(aluno.login)
+            print(aluno.senha)
+            print("Senha ou login errado")
+
+        return aluno.senha
