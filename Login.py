@@ -1,4 +1,4 @@
-from RepositorioAluno import *
+from Repositorios.RepositorioAluno import *
 from Aluno import *
 
 

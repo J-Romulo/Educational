@@ -1,8 +1,5 @@
-import tkinter
 from Login import *
-#from RepositorioAluno import *
-from MenuAluno import *
-#from Aluno import *
+from GUI.MenuAluno import *
 
 janelaPrincipal= tkinter.Tk()
 janelaPrincipal.title("Tela Inicial")
