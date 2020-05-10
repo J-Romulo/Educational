@@ -1,7 +1,6 @@
 from Repositorios.RepositorioAluno import *
 from Aluno import *
 
-
 class Login:
     def __init__(self):
         pass

@@ -1,4 +1,4 @@
-from Login import *
+from Facade.FcdAluno import *
 from GUI.MenuAluno import *
 
 janelaPrincipal= tkinter.Tk()
@@ -102,7 +102,7 @@ class TelaInicial:
             usuario = self.campoLogin.get()
             senha = self.campoSenha.get()
 
-            aluno = Login.log(usuario, senha)
+            aluno = FcdAluno.logar(usuario, senha)
 
             janelaPrincipal.destroy()
 
@@ -120,7 +120,7 @@ class TelaInicial:
             email = self.campoEmail.get()
             contato = self.campoContato.get()
 
-            aluno = Login.registrar(usuario, senha, nome, idade, email, contato)
+            aluno = FcdAluno.registrar(usuario, senha, nome, idade, email, contato)
 
             janelaPrincipal.destroy()
 

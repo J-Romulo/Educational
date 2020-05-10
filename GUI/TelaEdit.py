@@ -1,5 +1,5 @@
 import tkinter
-from ModificarPerfil import *
+from Facade.FcdAluno import *
 
 class TelaEdit:
     def __init__(self, aluno, tipoTela, master=None):
@@ -57,21 +57,18 @@ class TelaEdit:
         senha = self.entrySenhaConfir.get()
         novoLogin = self.entryLoginNovo.get()
 
-        log = ModificarPerfil.modificarLoginAluno(self.aluno, login, senha, novoLogin)
-        self.aluno.login = log
+        FcdAluno.modificarLogin(self.aluno, login, senha, novoLogin)
 
     def modificarSenha(self):
         login = self.entryLoginConfir.get()
         senha = self.entrySenhaConfir.get()
         novaSenha = self.entrySenhaNova.get()
 
-        senha = ModificarPerfil.modificarSenhaAluno(self.aluno, login, senha, novaSenha)
-        self.aluno.senha = senha
+        FcdAluno.modificarSenha(self.aluno, login, senha, novaSenha)
 
     def modificarNome(self):
         login = self.entryLoginConfir.get()
         senha = self.entrySenhaConfir.get()
         novoNome = self.entryNomeNovo.get()
 
-        nome = ModificarPerfil.modificarNomeAluno(self.aluno, login, senha, novoNome)
-        self.aluno.nome = nome
+        FcdAluno.modificarNome(self.aluno, login, senha, novoNome)

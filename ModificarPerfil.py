@@ -15,7 +15,6 @@ class ModificarPerfil:
             print(aluno.senha)
             print("Senha ou login errado")
 
-        return aluno.login
 
     @staticmethod
     def modificarSenhaAluno(aluno, login, senha, novaSenha):
@@ -27,7 +26,6 @@ class ModificarPerfil:
             print(aluno.senha)
             print("Senha ou login errado")
 
-        return aluno.senha
 
     @staticmethod
     def modificarNomeAluno(aluno, login, senha, novoNome):
@@ -38,5 +36,3 @@ class ModificarPerfil:
             print(aluno.login)
             print(aluno.senha)
             print("Senha ou login errado")
-
-        return aluno.nome
