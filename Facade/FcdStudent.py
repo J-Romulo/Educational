@@ -1,7 +1,7 @@
 from Login import *
 from EditProfile import *
-import tkinter
-from GUI.Errors.LoginError import LoginError
+from tkinter import messagebox
+from GUI.Errors.StandardErrorGUI import StandardErrorGUI
 
 class FcdStudent:
     def __init__(self):
@@ -34,7 +34,8 @@ class FcdStudent:
 
     @staticmethod
     def throwExceptionGUI(msgError):
-        mainFrame = tkinter.Tk()
-        mainFrame.title("Error")
-        mainFrame.geometry('225x60')
-        LoginError(msgError, mainFrame)
+        #mainFrame = tkinter.Tk()
+        #mainFrame.title("Error")
+        #mainFrame.geometry('225x60')
+        #StandardErrorGUI(msgError, mainFrame)
+        messagebox.showerror("Error", "{}".format(msgError))

@@ -1,13 +1,12 @@
 class Student:
 
-    def __init__(self, login, password, name, age, email, contact, id=None):
+    def __init__(self, login, password, name, age, email, contact):
         self.__name = name
         self.__age = age
         self.__contact = contact
         self.__login = login
         self.__password = password
         self.__email = email
-        self.__id = id
 
 
     @property
@@ -34,10 +33,6 @@ class Student:
     def contact(self):
         return self.__contact
 
-    @property
-    def id(self):
-        return self.__id
-
 
     @login.setter
     def login(self, login):
@@ -62,7 +57,3 @@ class Student:
     @contact.setter
     def contact(self, contact):
         self.__contact = contact
-
-    @id.setter
-    def id(self, id):
-        self.__id = id

@@ -13,14 +13,14 @@ class Login:
         try:
             if login and password:
                 student = StudentRepository.searchStudentLogin(login, password)
-                loggedStudent = Student(student[0][1], student[0][2], student[0][3], student[0][4], student[0][5], student[0][6],
-                                    student[0][0])
+                loggedStudent = Student(student[0][0], student[0][1], student[0][2], student[0][3], student[0][4], student[0][5])
             else:
                 raise BlankFieldError()
 
         except IndexError:
             try:
                 raise NotFindError()
+
             except NotFindError as logError:
                 logError.throwGUI()
 
@@ -39,8 +39,11 @@ class Login:
             else:
                 raise BlankFieldError()
 
-        except BlankFieldError as logError:
-            logError.throwGUI()
+        except BlankFieldError as regError:
+            regError.throwGUI()
+
+        except DuplicatePrimaryError as regError:
+            regError.throwGUI()
 
         else:
             return student

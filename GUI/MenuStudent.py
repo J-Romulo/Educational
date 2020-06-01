@@ -1,3 +1,4 @@
+from Facade.FcdCourses import FcdCourses
 from GUI.EditScreen import *
 
 class MenuStudent:
@@ -15,21 +16,28 @@ class MenuStudent:
         self.profileInfoWidget = tkinter.Frame(master)
         self.profileInfoWidget.pack()
 
-        self.nameLabel = tkinter.Label(self.profileInfoWidget)
+        self.rightProfileInfoWidget = tkinter.Frame(self.profileInfoWidget)
+        self.rightProfileInfoWidget.grid(row=0, column=1,padx=(10,30))
+
+        self.leftProfileInfoWidget = tkinter.Frame(self.profileInfoWidget)
+        self.leftProfileInfoWidget.grid(row=0, column=0, padx=(30,10))
+
+
+        self.nameLabel = tkinter.Label(self.leftProfileInfoWidget)
         self.nameLabel["text"] = ("Nome: {}".format(student.name))
-        self.nameLabel.pack(side=tkinter.LEFT)
+        self.nameLabel.grid(row=0, column=0, sticky=tkinter.W)
 
-        self.ageLabel = tkinter.Label(self.profileInfoWidget)
+        self.ageLabel = tkinter.Label(self.leftProfileInfoWidget)
         self.ageLabel["text"] = ("Idade: {}".format(student.age))
-        self.ageLabel.pack(side=tkinter.LEFT)
+        self.ageLabel.grid(row=1, column=0, sticky=tkinter.W)
 
-        self.emailLabel = tkinter.Label(self.profileInfoWidget)
+        self.emailLabel = tkinter.Label(self.rightProfileInfoWidget)
         self.emailLabel["text"] = ("Email: {}".format(student.email))
-        self.emailLabel.pack(side=tkinter.LEFT)
+        self.emailLabel.grid(row=0, column=0, sticky=tkinter.W)
 
-        self.contactLabel = tkinter.Label(self.profileInfoWidget)
+        self.contactLabel = tkinter.Label(self.rightProfileInfoWidget)
         self.contactLabel["text"] = ("Contato: {}".format(student.contact))
-        self.contactLabel.pack(side=tkinter.LEFT)
+        self.contactLabel.grid(row=1, column=0, sticky=tkinter.W)
 
 
 
@@ -46,22 +54,38 @@ class MenuStudent:
         self.editLoginButton = tkinter.Button(self.optionsWidget, text='Atualizar Login')
         self.editPasswordButton = tkinter.Button(self.optionsWidget, text='Atualizar Senha')
 
-        self.editFieldsAreaWidget = tkinter.Frame(master)
+
+
+        self.listCoursesWidget = tkinter.Frame(master)
+        self.listCoursesWidget.pack()
+
+        self.labelCourses = tkinter.Label(self.listCoursesWidget, text="Cursos disponíveis")
+        self.labelCourses.grid(row=0, column=0, padx=(20,30), pady=(10,0))
+
+        self.listCourses = tkinter.Listbox(self.listCoursesWidget, height=8)
+        FcdCourses.listAllCourses(self.listCourses)
+        self.listCourses.grid(row=1, column=0, padx=(20,30))
+
+        self.labelYourCourses = tkinter.Label(self.listCoursesWidget, text="Cursos matriculados")
+        self.labelYourCourses.grid(row=0, column=1, padx=(20,30), pady=(10,0))
+
+        self.listYourCourses = tkinter.Listbox(self.listCoursesWidget, height=8)
+        self.listYourCourses.grid(row=1, column=1, padx=(20,30))
 
     def edit(self):
         self.openEditProfileAreaButton.pack_forget()
 
         self.editLoginButton.pack(side=tkinter.LEFT)
-        self.editLoginButton["command"] = self.loginScreen
+        self.editLoginButton["command"] = self.editLoginScreen
 
         self.editPasswordButton.pack(side=tkinter.LEFT)
-        self.editPasswordButton["command"] = self.passwordScreen
+        self.editPasswordButton["command"] = self.editPasswordScreen
 
         self.editNameButton.pack(side=tkinter.LEFT)
         self.editNameButton["command"] = self.nameScreen
 
     
-    def loginScreen(self):
+    def editLoginScreen(self):
         EditScr = tkinter.Tk()
         EditScr.title("Modificar Login")
         EditScr.geometry('200x150')
@@ -70,7 +94,7 @@ class MenuStudent:
         EditScr.mainloop()
 
 
-    def passwordScreen(self):
+    def editPasswordScreen(self):
         EditScr = tkinter.Tk()
         EditScr.title("Modificar Senha")
         EditScr.geometry('200x150')

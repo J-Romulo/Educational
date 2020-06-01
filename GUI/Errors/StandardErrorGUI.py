@@ -1,6 +1,6 @@
 import tkinter
 
-class LoginError:
+class StandardErrorGUI:
     def __init__(self, msg, master=None):
         self.master = master
         self.mainWidget = tkinter.Frame(master)

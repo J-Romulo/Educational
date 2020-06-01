@@ -63,7 +63,7 @@ class InitialScreen:
 
         self.ageWidget = tkinter.Frame(master)
 
-        self.ageLabel = tkinter.Label(self.ageWidget, text="Idade")
+        self.ageLabel = tkinter.Label(self.ageWidget, text="Nascimento")
         self.ageLabel["font"] = ("arial", "13")
         self.ageLabel["width"] = ("13")
 
@@ -97,7 +97,7 @@ class InitialScreen:
 
                 mainFrame2 = tkinter.Tk()
                 mainFrame2.title("Menu")
-                mainFrame2.geometry('500x225')
+                mainFrame2.geometry('630x275')
 
                 MenuStudent(student, mainFrame2)
                 mainFrame2.mainloop()
@@ -116,7 +116,7 @@ class InitialScreen:
 
                 mainFrame2 = tkinter.Tk()
                 mainFrame2.title("Menu")
-                mainFrame2.geometry('500x225')
+                mainFrame2.geometry('630x275')
 
                 MenuStudent(aluno, mainFrame2)
                 mainFrame2.mainloop()
