@@ -1,5 +1,5 @@
-from Login import *
-from EditProfile import *
+from InitialScreenFunctions import *
+from EditProfileFunctions import *
 from tkinter import messagebox
 from GUI.Errors.StandardErrorGUI import StandardErrorGUI
 
@@ -10,7 +10,6 @@ class FcdStudent:
     @staticmethod
     def log(usuario, senha):
         student = Login.log(usuario, senha)
-
         return student
 
 

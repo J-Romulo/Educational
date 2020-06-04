@@ -12,7 +12,7 @@ class Login:
     def log(login, password):
         try:
             if login and password:
-                student = StudentRepository.searchStudentLogin(login, password)
+                student = StudentRepository.searchStudentByLogin(login, password)
                 loggedStudent = Student(student[0][0], student[0][1], student[0][2], student[0][3], student[0][4], student[0][5])
             else:
                 raise BlankFieldError()
@@ -35,15 +35,15 @@ class Login:
         try:
             if login and password and name and age and email and contact:
                 student = Student(login, password, name, age, email, contact)
-                StudentRepository.save(student)
+                StudentRepository.saveStudentData(student)
             else:
                 raise BlankFieldError()
 
-        except BlankFieldError as regError:
-            regError.throwGUI()
+        except BlankFieldError as registerError:
+            registerError.throwGUI()
 
-        except DuplicatePrimaryError as regError:
-            regError.throwGUI()
+        except DuplicatePrimaryKeyError as registerError:
+            registerError.throwGUI()
 
         else:
             return student

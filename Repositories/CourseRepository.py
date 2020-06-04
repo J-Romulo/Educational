@@ -1,5 +1,5 @@
 import mysql.connector
-from Exceptions.DuplicatePrimaryError import DuplicatePrimaryError
+from Exceptions.DuplicatePrimaryKeyError import DuplicatePrimaryKeyError
 
 db_connection = mysql.connector.connect(host='127.0.0.1', port='3308', user='root', password='', database='sistemabd')
 cursor = db_connection.cursor()
@@ -9,33 +9,33 @@ class CourseRepository():
         pass
 
     @staticmethod
-    def save(course):
+    def saveCourseData(course):
         sql = "INSERT INTO curso (nome, duracao, area) VALUES (%s, %s, %s)"
         values = (course.name, course.duration, course.area)
 
         try:
             cursor.execute(sql, values)
         except mysql.connector.errors.IntegrityError:
-            raise DuplicatePrimaryError()
+            raise DuplicatePrimaryKeyError()
 
     @staticmethod
-    def delete(name):
+    def deleteCourseByName(name):
         sql = "DELETE FROM curso WHERE nome = {}" .format(name)
         cursor.execute(sql)
 
     @staticmethod
-    def update(name, field, newInfo):
+    def editCourseField(name, field, newInfo):
         sql = "UPDATE curso SET {} = '{}' WHERE nome = {}" .format(field, newInfo, name)
         cursor.execute(sql)
 
     @staticmethod
-    def searchCourse(name):
+    def searchCourseByName(name):
         sql = "SELECT * FROM curso WHERE nome = '{}'".format(name)
         cursor.execute(sql)
         return cursor.fetchall()
 
     @staticmethod
-    def listCourses():
+    def listAllCourses():
         sql = "SELECT * FROM curso"
         cursor.execute(sql)
         return cursor.fetchall()

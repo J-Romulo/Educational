@@ -1,7 +1,7 @@
 import Facade.FcdStudent as facade
 
 
-class DuplicatePrimaryError(Exception):
+class DuplicatePrimaryKeyError(Exception):
     def __init__(self):
         pass
 

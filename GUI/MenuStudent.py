@@ -46,7 +46,7 @@ class MenuStudent:
 
         self.openEditProfileAreaButton = tkinter.Button(self.optionsWidget, text='Modificar Perfil')
         self.openEditProfileAreaButton.pack(side=tkinter.LEFT)
-        self.openEditProfileAreaButton["command"] = self.edit
+        self.openEditProfileAreaButton["command"] = self.editOptionsButtons
 
 
         #Itens sem pack
@@ -63,7 +63,7 @@ class MenuStudent:
         self.labelCourses.grid(row=0, column=0, padx=(20,30), pady=(10,0))
 
         self.listCourses = tkinter.Listbox(self.listCoursesWidget, height=8)
-        FcdCourses.listAllCourses(self.listCourses)
+        FcdCourses.takeListOfAllCoursesAndSendToGui(self.listCourses)
         self.listCourses.grid(row=1, column=0, padx=(20,30))
 
         self.labelYourCourses = tkinter.Label(self.listCoursesWidget, text="Cursos matriculados")
@@ -72,7 +72,7 @@ class MenuStudent:
         self.listYourCourses = tkinter.Listbox(self.listCoursesWidget, height=8)
         self.listYourCourses.grid(row=1, column=1, padx=(20,30))
 
-    def edit(self):
+    def editOptionsButtons(self):
         self.openEditProfileAreaButton.pack_forget()
 
         self.editLoginButton.pack(side=tkinter.LEFT)
@@ -82,13 +82,13 @@ class MenuStudent:
         self.editPasswordButton["command"] = self.editPasswordScreen
 
         self.editNameButton.pack(side=tkinter.LEFT)
-        self.editNameButton["command"] = self.nameScreen
+        self.editNameButton["command"] = self.editNameScreen
 
     
     def editLoginScreen(self):
         EditScr = tkinter.Tk()
         EditScr.title("Modificar Login")
-        EditScr.geometry('200x150')
+        EditScr.geometry('260x150')
 
         EditScreen(self.student, 1, EditScr)
         EditScr.mainloop()
@@ -97,16 +97,16 @@ class MenuStudent:
     def editPasswordScreen(self):
         EditScr = tkinter.Tk()
         EditScr.title("Modificar Senha")
-        EditScr.geometry('200x150')
+        EditScr.geometry('260x150')
 
         EditScreen(self.student, 2, EditScr)
         EditScr.mainloop()
 
 
-    def nameScreen(self):
+    def editNameScreen(self):
         EditScr = tkinter.Tk()
         EditScr.title("Modificar Nome")
-        EditScr.geometry('200x150')
+        EditScr.geometry('260x150')
 
         EditScreen(self.student, 3, EditScr)
         EditScr.mainloop()

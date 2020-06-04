@@ -8,12 +8,12 @@ class EditProfile:
         pass
 
     @staticmethod
-    def editStudentLogin(student, login, password, newLogin):
+    def editStudentLogin(student, passedLogin, passedPassword, newLogin):
         try:
-            if login and password and newLogin:
+            if passedLogin and passedPassword and newLogin:
 
-                if student.login == login and student.password == password:
-                    StudentRepository.editProfile(student.id, 'login', newLogin)
+                if student.login == passedLogin and student.password == passedPassword:
+                    StudentRepository.editProfileField(student.login, 'login', newLogin)
                     student.login = newLogin
 
                 else:
@@ -29,12 +29,12 @@ class EditProfile:
             editError.throwGUI()
 
     @staticmethod
-    def editStudentPassword(student, login, password, newPassword):
+    def editStudentPassword(student, passedLogin, passedPassword, newPassword):
         try:
-            if login and password and newPassword:
+            if passedLogin and passedPassword and newPassword:
 
-                if student.login == login and student.password == password:
-                    StudentRepository.editProfile(student.id, 'senha', newPassword)
+                if student.login == passedLogin and student.password == passedPassword:
+                    StudentRepository.editProfileField(student.login, 'senha', newPassword)
                     student.password = newPassword
                 else:
                     raise NotFindError()
@@ -54,7 +54,7 @@ class EditProfile:
             if login and password and newName:
 
                 if student.login == login and student.password == password:
-                    StudentRepository.editProfile(student.id, 'nome', newName)
+                    StudentRepository.editProfileField(student.login, 'nome', newName)
                     student.name = newName
 
                 else:

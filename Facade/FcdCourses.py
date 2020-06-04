@@ -5,7 +5,7 @@ class FcdCourses:
         pass
 
     @staticmethod
-    def listAllCourses(widget):
-        list = CourseRepository.listCourses()
+    def takeListOfAllCoursesAndSendToGui(widget):
+        list = CourseRepository.listAllCourses()
         for i in range(len(list)):
             widget.insert(i+1, list[i][0])
