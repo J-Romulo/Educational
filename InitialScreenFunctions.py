@@ -13,7 +13,7 @@ class Login:
         try:
             if login and password:
                 student = StudentRepository.searchStudentByLogin(login, password)
-                loggedStudent = Student(student[0][0], student[0][1], student[0][2], student[0][3], student[0][4], student[0][5])
+                loggedStudent = Student(student[0], student[1], student[2], student[3], student[4], student[5])
             else:
                 raise BlankFieldError()
 

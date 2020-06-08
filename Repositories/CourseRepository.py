@@ -32,7 +32,7 @@ class CourseRepository():
     def searchCourseByName(name):
         sql = "SELECT * FROM curso WHERE nome = '{}'".format(name)
         cursor.execute(sql)
-        return cursor.fetchall()
+        return cursor.fetchone()
 
     @staticmethod
     def listAllCourses():

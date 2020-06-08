@@ -32,7 +32,7 @@ class StudentRepository():
     def searchStudentByLogin(login, password):
         sql = "SELECT * FROM aluno WHERE login = '{}' AND senha = '{}' ".format(login, password)
         cursor.execute(sql)
-        return cursor.fetchall()
+        return cursor.fetchone()
 
     @staticmethod
     def listAllStudents():
