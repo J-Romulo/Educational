@@ -1,5 +1,4 @@
-import Facade.FcdStudent as facade
-
+from tkinter import messagebox
 
 class BlankFieldError(Exception):
     def __init__(self):
@@ -8,5 +7,6 @@ class BlankFieldError(Exception):
     def __str__(self):
         return "Preencha todos os campos para continuar"
 
-    def throwGUIError(self):
-        facade.FcdStudent.throwExceptionGUI(self.__str__())
+    def throwGUI(self):
+        messagebox.showerror("Error", "{}".format(self.__str__()))
+

@@ -3,7 +3,7 @@ from Exceptions.BlankFieldError import BlankFieldError
 from Repositories.StudentRepository import *
 
 
-class EditProfile:
+class EditProfileFunctions:
     def __init__(self):
         pass
 
@@ -16,6 +16,7 @@ class EditProfile:
                     StudentRepository.editProfileField(student.login, 'login', newLogin)
                     student.login = newLogin
 
+                    return True
                 else:
                     raise NotFindError()
 
@@ -36,6 +37,8 @@ class EditProfile:
                 if student.login == passedLogin and student.password == passedPassword:
                     StudentRepository.editProfileField(student.login, 'senha', newPassword)
                     student.password = newPassword
+
+                    return True
                 else:
                     raise NotFindError()
 
@@ -57,6 +60,7 @@ class EditProfile:
                     StudentRepository.editProfileField(student.login, 'nome', newName)
                     student.name = newName
 
+                    return True
                 else:
                     raise NotFindError()
 

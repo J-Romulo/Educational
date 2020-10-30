@@ -4,7 +4,7 @@ from Repositories.StudentRepository import *
 from Entities.Student import *
 
 
-class Login:
+class InitialScreenFunctions:
     def __init__(self):
         pass
 
@@ -12,8 +12,13 @@ class Login:
     def log(login, password):
         try:
             if login and password:
+
                 student = StudentRepository.searchStudentByLogin(login, password)
-                loggedStudent = Student(student[0], student[1], student[2], student[3], student[4], student[5])
+                if student:
+                    loggedStudent = Student(student[0], student[1], student[2], student[3], student[4], student[5])
+                else:
+                    raise IndexError
+
             else:
                 raise BlankFieldError()
 

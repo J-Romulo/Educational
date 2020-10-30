@@ -1,4 +1,4 @@
-import Facade.FcdStudent as facade
+from tkinter import messagebox
 
 class NotFindError(IndexError):
     def __init__(self):
@@ -8,4 +8,4 @@ class NotFindError(IndexError):
         return "Nome de usuário e/ou senha incorretos\nNenhum usuário encontrado"
 
     def throwGUI(self):
-        facade.FcdStudent.throwExceptionGUI(self.__str__())
+        messagebox.showerror("Error", "{}".format(self.__str__()))

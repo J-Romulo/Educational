@@ -1,9 +1,5 @@
-from Entities.Course import Course
-from GUI.InfoCourseScreen import InfoCourseScreen
-from Repositories.GradeSheetRepository import GradeSheetRepository
-from Repositories.CourseRepository import CourseRepository
-from Entities.GradeSheet import *
-import tkinter
+from CourseFunctions import *
+from GradeSheetFunctions import *
 
 class FcdCourses:
     def __init__(self):
@@ -11,38 +7,38 @@ class FcdCourses:
 
     @staticmethod
     def getCourse(courseName):
-        courseData = CourseRepository.searchCourseByName(courseName)
-
-        course = Course(courseData[0], courseData[1], courseData[2])
-
-        return course
+        return CourseFunctions.getCourseData(courseName)
 
     @staticmethod
     def takeListOfAllCoursesAndSendToGui(widget):
-        list = CourseRepository.listAllCourses()
+        list = CourseFunctions.takeListOfAllCourses()
         for i in range(len(list)):
             widget.insert(i+1, list[i][0])
 
     @staticmethod
     def getGradeSheet(courseName, studentLogin):
-        gradeSheetData = GradeSheetRepository.searchGradeSheet(courseName, studentLogin)
-
-        gradeSheet = GradeSheet(gradeSheetData[6], gradeSheetData[7])
-        print(gradeSheetData)
-        return gradeSheet
+        return GradeSheetFunctions.getGradeSheet(courseName, studentLogin)
 
 
     @staticmethod
     def takeListOfAllGradeSheetsAndSendToGui(widget, student):
-        list = GradeSheetRepository.listAllStudentsGradeSheets(student)
+        list = GradeSheetFunctions.takeListOfAllGradeSheets(student)
         for i in range(len(list)):
-            widget.insert(i + 1, list[i][7])
+            widget.insert(i + 1, list[i][2])
 
 
     @staticmethod
     def setNewGradeSheet(courseName, student):
-        studentGradeSheet = GradeSheet(student.login, courseName)
-        GradeSheetRepository.saveGradeSheetData(studentGradeSheet)
+        return GradeSheetFunctions.setNewGradeSheet(courseName, student)
+
+    @staticmethod
+    def cancelGradeSheet(courseName, studentLogin):
+        return GradeSheetFunctions.cancelGradeSheet(courseName, studentLogin)
+
+
+
+
+
 
 
 
