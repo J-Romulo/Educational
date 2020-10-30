@@ -68,4 +68,10 @@ class GradeSheet:
         self.__absence = absence
 
     def __str__(self):
-        return "{}, {}, {}, {}, {}, {}, {}".format(self.login_student, self.course_name, self.grade1, self.grade2, self.grade3, self.averageGrade, self.absence)
+        return "{}, {}, {}, {}, {}, {}, {}".format(self.login_student,
+                                                   self.course_name,
+                                                   self.grade1,
+                                                   self.grade2,
+                                                   self.grade3,
+                                                   self.averageGrade,
+                                                   self.absence)

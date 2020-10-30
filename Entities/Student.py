@@ -1,12 +1,12 @@
 class Student:
 
     def __init__(self, login, password, name, age, email, contact):
-        self.__name = name
-        self.__age = age
-        self.__contact = contact
         self.__login = login
         self.__password = password
+        self.__name = name
+        self.__age = age
         self.__email = email
+        self.__contact = contact
 
 
     @property

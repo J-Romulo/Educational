@@ -1,7 +1,7 @@
 import mysql.connector
 from Exceptions.DuplicatePrimaryKeyError import DuplicatePrimaryKeyError
 
-db_connection = mysql.connector.connect(host='127.0.0.1', port='3308', user='root', password='', database='sistemabd')
+db_connection = mysql.connector.connect(host='127.0.0.1', port='3306', user='root', password='', database='sistemabd')
 cursor = db_connection.cursor()
 
 class CourseRepository():
@@ -20,12 +20,12 @@ class CourseRepository():
 
     @staticmethod
     def deleteCourseByName(name):
-        sql = "DELETE FROM curso WHERE nome = {}" .format(name)
+        sql = "DELETE FROM curso WHERE nome = '{}'" .format(name)
         cursor.execute(sql)
 
     @staticmethod
     def editCourseField(name, field, newInfo):
-        sql = "UPDATE curso SET {} = '{}' WHERE nome = {}" .format(field, newInfo, name)
+        sql = "UPDATE curso SET {} = '{}' WHERE nome = '{}'" .format(field, newInfo, name)
         cursor.execute(sql)
 
     @staticmethod
