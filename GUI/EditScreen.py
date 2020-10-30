@@ -1,9 +1,12 @@
 import tkinter
+from tkinter import messagebox
 from Facade.FcdStudent import *
+
 
 class EditScreen:
     def __init__(self, student, tipoTela, master=None):
         self.student = student
+        self.master = master
 
         self.mainWidget = tkinter.Frame(master)
         self.mainWidget.pack()
@@ -57,18 +60,54 @@ class EditScreen:
         password = self.passwordConfirmField.get()
         newLogin = self.newLoginField.get()
 
-        FcdStudent.editLogin(self.student, login, password, newLogin)
+        answer = messagebox.askyesno("Está seguro?", "Você tem certeza que quer mudar seu login?")
+
+        if answer:
+            expectedBehavior = FcdStudent.editLogin(self.student, login, password, newLogin)
+
+            if expectedBehavior:
+                self.master.destroy()
+                messagebox.showinfo("Login Atualizado", "Seu login foi atualizado com sucesso!")
+        else:
+            self.master.destroy()
+            messagebox.showinfo("Cancelado com sucesso","Procedimento de mudança de login cancelado.")
+
+
 
     def editPassword(self):
         login = self.loginConfirmField.get()
         password = self.passwordConfirmField.get()
         newPassword = self.newPasswordField.get()
 
-        FcdStudent.editPassword(self.student, login, password, newPassword)
+        answer = messagebox.askyesno("Está seguro?", "Você tem certeza que quer mudar sua senha?")
+
+        if answer:
+            expectedBehavior = FcdStudent.editPassword(self.student, login, password, newPassword)
+
+            if expectedBehavior:
+                self.master.destroy()
+                messagebox.showinfo("Senha Atualizada", "Sua senha foi atualizada com sucesso!")
+
+        else:
+            self.master.destroy()
+            messagebox.showinfo("Cancelado com sucesso","Procedimento de mudança de senha cancelado.")
+
+
 
     def editName(self):
         login = self.loginConfirmField.get()
         password = self.passwordConfirmField.get()
         newName = self.newNameField.get()
 
-        FcdStudent.editName(self.student, login, password, newName)
+        answer = messagebox.askyesno("Está seguro?", "Você tem certeza que quer mudar seu nome?")
+
+        if answer:
+            expectedBehavior = FcdStudent.editName(self.student, login, password, newName)
+
+            if expectedBehavior:
+                self.master.destroy()
+                messagebox.showinfo("Nome Atualizado", "Seu nome foi atualizado com sucesso!")
+
+        else:
+            self.master.destroy()
+            messagebox.showinfo("Cancelado com sucesso", "Procedimento de mudança de nome cancelado.")

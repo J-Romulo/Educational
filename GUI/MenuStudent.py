@@ -31,7 +31,7 @@ class MenuStudent:
         self.nameLabel.grid(row=0, column=0, sticky=tkinter.W)
 
         self.ageLabel = tkinter.Label(self.leftProfileInfoWidget)
-        self.ageLabel["text"] = ("Idade: {}".format(student.age))
+        self.ageLabel["text"] = ("Ano Nasc.: {}".format(student.age))
         self.ageLabel.grid(row=1, column=0, sticky=tkinter.W)
 
         self.emailLabel = tkinter.Label(self.rightProfileInfoWidget)
@@ -45,7 +45,7 @@ class MenuStudent:
 
 
         self.optionsWidget = tkinter.Frame(master)
-        self.optionsWidget.pack()
+        self.optionsWidget.pack(pady=(10,0))
 
         self.openEditProfileAreaButton = tkinter.Button(self.optionsWidget, text='Modificar Perfil')
         self.openEditProfileAreaButton.pack(side=tkinter.LEFT)
@@ -60,7 +60,7 @@ class MenuStudent:
 
 
         self.listCoursesWidget = tkinter.Frame(master)
-        self.listCoursesWidget.pack()
+        self.listCoursesWidget.pack(pady=(0,20))
 
         self.labelCourses = tkinter.Label(self.listCoursesWidget, text="Cursos disponíveis")
         self.labelCourses.grid(row=0, column=0, padx=(20,30), pady=(10,0))
@@ -85,8 +85,9 @@ class MenuStudent:
         course = FcdCourses.getCourse(courseName)
 
         courseFrame = tkinter.Tk()
+        courseFrame.resizable(width=False, height=False)
         courseFrame.title("{}".format(course.name))
-        courseFrame.geometry('225x200')
+        courseFrame.geometry('225x100')
         InfoCourseScreen(self.student, course, FcdCourses, courseFrame)
 
     def getSelectedGradeSheetAndOpenScreen(self, event):
@@ -96,8 +97,9 @@ class MenuStudent:
         gradeSheet = FcdCourses.getGradeSheet(gradeSheetCourseName, self.student.login)
 
         gradeSheetFrame = tkinter.Tk()
+        gradeSheetFrame.resizable(width=False, height=False)
         gradeSheetFrame.title("{}".format(gradeSheet.course_name))
-        gradeSheetFrame.geometry('225x200')
+        gradeSheetFrame.geometry('225x180')
 
         InfoGradeSheetScreen(gradeSheet, gradeSheetFrame)
 
@@ -115,27 +117,30 @@ class MenuStudent:
 
     
     def editLoginScreen(self):
-        EditScr = tkinter.Tk()
-        EditScr.title("Modificar Login")
-        EditScr.geometry('260x150')
+        editScr = tkinter.Tk()
+        editScr.title("Modificar Login")
+        editScr.resizable(width=False, height=False)
+        editScr.geometry('260x150')
 
-        EditScreen(self.student, 1, EditScr)
-        EditScr.mainloop()
+        EditScreen(self.student, 1, editScr)
+        editScr.mainloop()
 
 
     def editPasswordScreen(self):
-        EditScr = tkinter.Tk()
-        EditScr.title("Modificar Senha")
-        EditScr.geometry('260x150')
+        editScr = tkinter.Tk()
+        editScr.title("Modificar Senha")
+        editScr.resizable(width=False, height=False)
+        editScr.geometry('260x150')
 
-        EditScreen(self.student, 2, EditScr)
-        EditScr.mainloop()
+        EditScreen(self.student, 2, editScr)
+        editScr.mainloop()
 
 
     def editNameScreen(self):
-        EditScr = tkinter.Tk()
-        EditScr.title("Modificar Nome")
-        EditScr.geometry('260x150')
+        editScr = tkinter.Tk()
+        editScr.title("Modificar Nome")
+        editScr.resizable(width=False, height=False)
+        editScr.geometry('260x150')
 
-        EditScreen(self.student, 3, EditScr)
-        EditScr.mainloop()
+        EditScreen(self.student, 3, editScr)
+        editScr.mainloop()
